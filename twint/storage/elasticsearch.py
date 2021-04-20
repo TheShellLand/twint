@@ -120,7 +120,8 @@ def createIndex(config, instance, **scope):
                     }
                 }
         with nostdout():
-            resp = instance.indices.create(index=config.Index_tweets, body=tweets_body, ignore=400)
+            # resp = instance.indices.create(index=config.Index_tweets, body=tweets_body, ignore=400)
+            resp = instance.indices.create(index=config.Index_tweets, ignore=400)
         return handleIndexResponse(resp)
     elif scope.get("scope") == "follow":
         follow_body = {
@@ -136,7 +137,8 @@ def createIndex(config, instance, **scope):
                     }
                 }
         with nostdout():
-            resp = instance.indices.create(index=config.Index_follow, body=follow_body, ignore=400)
+            # resp = instance.indices.create(index=config.Index_follow, body=follow_body, ignore=400)
+            resp = instance.indices.create(index=config.Index_follow, ignore=400)
         return handleIndexResponse(resp)
     elif scope.get("scope") == "user":
         user_body = {
@@ -167,7 +169,8 @@ def createIndex(config, instance, **scope):
                     }
                 }
         with nostdout():
-            resp = instance.indices.create(index=config.Index_users, body=user_body, ignore=400)
+            # resp = instance.indices.create(index=config.Index_users, body=user_body, ignore=400)
+            resp = instance.indices.create(index=config.Index_users, ignore=400)
         return handleIndexResponse(resp)
     else:
         print("[x] error index pre-creation :: storage.elasticsearch.createIndex")
